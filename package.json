@@ -1,0 +1,22 @@
+{
+  "name": "wesselboat",
+  "version": "1.0.0",
+  "description": "<h3>A boat made for tha wessel :3</h3>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FuryingFox/WesselBoat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FuryingFox/WesselBoat/issues"
+  },
+  "homepage": "https://github.com/FuryingFox/WesselBoat#readme",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
+}

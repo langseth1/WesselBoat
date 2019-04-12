@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag} \n Type "check" in any txt channel to check if boat works!`);
+  console.log(`Logged in as ${client.user.tag} \n Type "check" in any txt channel to check if boat works! \n in ${client.guilds.size} guilds!`);
   client.user.setActivity(`.help | On ${client.guilds.size} Server`);
 });
 
@@ -13,8 +13,49 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
+  if (message.content === '.time') {
+    const d = Date();
+    message.channel.send(d);
+  }
+});
+
+
+client.on('message', message => {
+  if (message.content === "chri") {
+    message.channel.send("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE", {
+      tts: true
+    });
+  }
+});
+
+client.on('message', message => {
+  if (message.content === '.ping') {
+    message.channel.send(`${client.ping}ms`);
+  }
+});
+
+client.on('message', message => {
+  if (message.content === '.avatar') {
+    message.channel.send(`${message.author.displayAvatarURL}`);
+  }
+});
+
+
+client.on('message', message => {
+  if (message.content === '.uptime') {
+    message.channel.send(`Bot has been on for ${client.uptime}ms!`);
+  }
+});
+
+client.on('message', message => {
   if (message.content === '.jerry') {
     message.channel.send("JERRY! https://m-p16.akamaized.net/img/tos-maliva-p-0068/0cppq0qvvetdbte6iphb00005144090v0200009e05~noop.image");
+  }
+});
+
+client.on('message', message => {
+  if (message.content === '.invite') {
+    message.author.send("`Invite link:` https://discordapp.com/oauth2/authorize?client_id=565559609922682881&scope=bot&permissions=281158718");
   }
 });
 
@@ -30,15 +71,15 @@ client.on('message', message => {
       description: "Made by: [fox#7345](https://discord.gg/D2WwvJd)",
       fields: [{
           name: "Normal Commands",
-          value: "`check` | Check if boat is working."
+          value: "`check` | Check if boat is working. \n `jerry` | Sends picture of jerry. \n `time` | Sends the current time."
         },
         {
           name: "Admin/Mod Commands",
-          value: "`kick` | Kicks the member from the server. \n `ban` | Bans the spesified member. \n `mute`/`unmute` | Mutes/Unmutes the spesified member."
+          value: "`kick` | Kicks the member from the server. \n `ban` | Bans the spesified member. \n `mute`/`unmute` | Mutes/Unmutes the spesified member. \n `voicemute`/`voiceunmute` | Mutes/Unmutes the spesified members voicechat."
         },
         {
-          name: "Images Commands",
-          value: "`jerry` | Sends picture of jerry."
+          name: "Useful Commands",
+          value: "`invite` | Sends you invite link for the bot in dms. \n `uptime` | Shows the bots uptime. \n `avatar` | Displays the users avatar. \n `ping` | Displays the bots ping."
         },
         {
           name: "Developer Commands",
@@ -57,17 +98,16 @@ client.on('message', message => {
 
 client.on("message", message => {
   if(!message.guild);
-  if(message.content.startsWith(".send")) {
-    if(!message.author.id("222002405670256641")) return message.channel.send("You don't have perms :3");
+  if(message.content.startsWith(".voicemute")) {
+    if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("You don't have perms :3");
      
     const user = message.mentions.users.first();
-    const muted = message.guild.roles.find('name', 'muted');
 
     if(user) {
       const member = message.guild.member(user);
 
       if (member) {
-         member.addRole(muted).then(() => {
+         member.setMute(true, "Why the hell not.").then(() => {
 
           message.channel.send(`${user.tag} is now muted.`);
 
@@ -81,6 +121,35 @@ client.on("message", message => {
     
     } else {
       message.reply("Could not mute the member. (User not in guild/Wrong mention)");
+    }
+  }
+});
+
+client.on("message", message => {
+  if(!message.guild);
+  if(message.content.startsWith(".voiceunmute")) {
+    if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("You don't have perms :3");
+     
+    const user = message.mentions.users.first();
+
+    if(user) {
+      const member = message.guild.member(user);
+
+      if (member) {
+         member.setMute(false, "Why the hell not.").then(() => {
+
+          message.channel.send(`${user.tag} is now unmuted.`);
+
+        }).catch(err => {
+          message.reply("Unable to unmute (bot doesn't have perms)");
+          console.error(err);
+        }); 
+      } else {
+        message.reply("Could not unmute the member. (User not in guild/Wrong mention)");
+      }
+    
+    } else {
+      message.reply("Could not unmute the member. (User not in guild/Wrong mention)");
     }
   }
 });
