@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const config = require("./src/configs/config.json");
 
 module.exports.run = async (client, message) => {
     message.channel.send({embed: {

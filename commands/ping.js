@@ -1,3 +1,9 @@
-exports.run = (client, message, args) => {
-    message.channel.send(`${client.ping}ms`);
+module.exports.run = async (client, message) => {
+    
 }
+
+module.exports.config = {
+    name: "Help",
+    aliases: ["help", "helppage"]
+  
+  }
