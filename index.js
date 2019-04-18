@@ -7,9 +7,11 @@ ______                _              __
 \_|  \__,_|_|   \__, |_|_| |_|\__, |_| \___/_/\_\
                  __/ |         __/ |             
                 |___/         |___/              
+Name: WesselBoat made by Furyingfox.             
 Github: FuryingFox
 Discord: fox#7345
 License: MIT | USE WITH RIGHT CREDENTIALS.
+(KEEP THIS SIGNATURE HERE IF YOU USE THE CODE)
 */
 const Discord = require('discord.js');
 const client = new Discord.Client();
