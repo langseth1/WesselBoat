@@ -1,0 +1,44 @@
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const config = require("./src/configs/config.json");
+
+module.exports.run = async (client, message) => {
+    message.channel.send({embed: {
+        color: 3447003,
+        author: {
+          name: "Wessel Boat's Help Page",
+          icon_url: client.user.avatarURL
+        },
+        title: "Prefix = `.`",
+        description: "Made by: [fox#7345](https://discord.gg/D2WwvJd)",
+        fields: [{
+            name: "Normal Commands",
+            value: "`check` | Check if boat is working. \n `jerry` | Sends picture of jerry. \n `time` | Sends the current time."
+          },
+          {
+            name: "Admin/Mod Commands",
+            value: "`kick` | Kicks the member from the server. \n `ban` | Bans the spesified member. \n `mute`/`unmute` | Mutes/Unmutes the spesified member. \n `voice-mute`/`voice-unmute` | Mutes/Unmutes the spesified member. (voicechat) \n `voice-deafen`/`voice-undeafen` | Deafens/Undeafens the member. (voicechat)"
+          },
+          {
+            name: "Useful Commands",
+            value: "`invite` | Sends you invite link for the bot in dms. \n `uptime` | Shows the bots uptime. \n `avatar` | Displays the users avatar. \n `ping` | Displays the bots ping."
+          },
+          {
+            name: "Developer Commands",
+            value: "`send` | Sends message to spesified user."
+          }
+        ],
+        timestamp: new Date(),
+        footer: {
+          icon_url: client.user.avatarURL,
+          text: client.user.username
+        }
+      }
+    });
+}
+
+module.exports.config = {
+  name: "Help",
+  aliases: ["help", "helppage"]
+
+}

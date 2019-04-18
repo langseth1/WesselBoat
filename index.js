@@ -1,50 +1,44 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const config = require("./config.json");
+const fs = require("fs");
+const Enmap = require("enmap")
+
+client.config = config;
+
+fs.readdir("./events/", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach(file => {
+    const event = require(`./events/${file}`);
+    let eventName = file.split(".")[0];
+    client.on(eventName, event.bind(null, client));
+  });
+});
+
+client.commands = new Enmap();
+
+fs.readdir("./commands/", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach(file => {
+    if (!file.endsWith(".js")) return;
+    let props = require(`./commands/${file}`);
+    let commandName = file.split(".")[0];
+    console.log(`Attempting to load command ${commandName}`);
+    client.commands.set(commandName, props);
+  });
+});
+
+
+
+
+
+
+
+
+
 
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag} \n Type "check" in any txt channel to check if boat works! \n in ${client.guilds.size} guilds!`);
-  client.user.setActivity(`.help | On ${client.guilds.size} Server`);
-});
-
-client.on('message', message => {
-  if (message.content === 'check') {
-    message.channel.send("Workin'");
-  }
-});
-
-client.on('message', message => {
-  if (message.content === '.time') {
-    const d = Date();
-    message.channel.send(d);
-  }
-});
-
-
-client.on('message', message => {
-  if (message.content === "chri") {
-    message.channel.send("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE", {
-      tts: true
-    });
-  }
-});
-
-client.on('message', message => {
-  if (message.content === '.ping') {
-    message.channel.send(`${client.ping}ms`);
-  }
-});
-
-client.on('message', message => {
-  if (message.content === '.avatar') {
-    message.channel.send(`${message.author.displayAvatarURL}`);
-  }
-});
-
-
-client.on('message', message => {
-  if (message.content === '.uptime') {
-    message.channel.send(`Bot has been on for ${client.uptime}ms!`);
-  }
+  
 });
 
 client.on('message', message => {
@@ -61,98 +55,10 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content === '.help') {
-    message.channel.send({embed: {
-      color: 3447003,
-      author: {
-        name: "Wessel Boat's Help Page",
-        icon_url: client.user.avatarURL
-      },
-      title: "Prefix = `.`",
-      description: "Made by: [fox#7345](https://discord.gg/D2WwvJd)",
-      fields: [{
-          name: "Normal Commands",
-          value: "`check` | Check if boat is working. \n `jerry` | Sends picture of jerry. \n `time` | Sends the current time."
-        },
-        {
-          name: "Admin/Mod Commands",
-          value: "`kick` | Kicks the member from the server. \n `ban` | Bans the spesified member. \n `mute`/`unmute` | Mutes/Unmutes the spesified member. \n `voicemute`/`voiceunmute` | Mutes/Unmutes the spesified members voicechat."
-        },
-        {
-          name: "Useful Commands",
-          value: "`invite` | Sends you invite link for the bot in dms. \n `uptime` | Shows the bots uptime. \n `avatar` | Displays the users avatar. \n `ping` | Displays the bots ping."
-        },
-        {
-          name: "Developer Commands",
-          value: "`send` | Sends message to spesified user."
-        }
-      ],
-      timestamp: new Date(),
-      footer: {
-        icon_url: client.user.avatarURL,
-        text: client.user.username
-      }
-    }
-  });
-  }
-});
-
-client.on("message", message => {
-  if(!message.guild);
-  if(message.content.startsWith(".voicemute")) {
-    if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("You don't have perms :3");
-     
-    const user = message.mentions.users.first();
-
-    if(user) {
-      const member = message.guild.member(user);
-
-      if (member) {
-         member.setMute(true, "Why the hell not.").then(() => {
-
-          message.channel.send(`${user.tag} is now muted.`);
-
-        }).catch(err => {
-          message.reply("Unable to mute (bot doesn't have perms)");
-          console.error(err);
-        }); 
-      } else {
-        message.reply("Could not mute the member. (User not in guild/Wrong mention)");
-      }
     
-    } else {
-      message.reply("Could not mute the member. (User not in guild/Wrong mention)");
-    }
   }
 });
 
-client.on("message", message => {
-  if(!message.guild);
-  if(message.content.startsWith(".voiceunmute")) {
-    if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("You don't have perms :3");
-     
-    const user = message.mentions.users.first();
-
-    if(user) {
-      const member = message.guild.member(user);
-
-      if (member) {
-         member.setMute(false, "Why the hell not.").then(() => {
-
-          message.channel.send(`${user.tag} is now unmuted.`);
-
-        }).catch(err => {
-          message.reply("Unable to unmute (bot doesn't have perms)");
-          console.error(err);
-        }); 
-      } else {
-        message.reply("Could not unmute the member. (User not in guild/Wrong mention)");
-      }
-    
-    } else {
-      message.reply("Could not unmute the member. (User not in guild/Wrong mention)");
-    }
-  }
-});
 
 client.on("message", message => {
   if(!message.guild);
@@ -243,33 +149,6 @@ client.on("message", message => {
   }
 });
 
-client.on("message", message => {
-  if(!message.guild);
-  if(message.content.startsWith(".ban")) {
-    if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("You don't have perms :3");
-     
-    const user = message.mentions.users.first();
 
-    if(user) {
-      const member = message.guild.member(user);
 
-      if (member) {
-         member.ban("Optional reason -> Audit Log.").then(() => {
-
-          message.channel.send(`${user.tag} is banned from the guild!`);
-
-        }).catch(err => {
-          message.reply("Unable to ban (bot doesn't have perms)");
-          console.error(err);
-        }); 
-      } else {
-        message.reply("Could not ban the member. (User not in guild/Wrong mention)");
-      }
-    
-    } else {
-      message.reply("Could not ban the member. (User not in guild/Wrong mention)");
-    }
-  }
-});
-
-client.login("");
+client.login(config.token);

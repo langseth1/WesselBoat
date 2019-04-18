@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/FuryingFox/WesselBoat#readme",
   "dependencies": {
-    "discord.js": "^11.4.2"
+    "discord.js": "^11.4.2",
+    "enmap": "^4.8.4",
+    "fs": "0.0.1-security"
   }
 }
