@@ -1,6 +1,3 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
-
 module.exports.run = async (client, message) => {
     message.channel.send({embed: {
         color: 3447003,
@@ -12,11 +9,11 @@ module.exports.run = async (client, message) => {
         description: "Made by: [fox#7345](https://discord.gg/D2WwvJd)",
         fields: [{
             name: "Normal Commands",
-            value: "`check` | Check if boat is working. \n `jerry` | Sends picture of jerry. \n `time` | Sends the current time."
+            value: "`check` | Check if boat is working. \n `jerry` | Sends picture of jerry."
           },
           {
             name: "Admin/Mod Commands",
-            value: "`kick` | Kicks the member from the server. \n `ban` | Bans the spesified member. \n `mute`/`unmute` | Mutes/Unmutes the spesified member. \n `voice-mute`/`voice-unmute` | Mutes/Unmutes the spesified member. (voicechat) \n `voice-deafen`/`voice-undeafen` | Deafens/Undeafens the member. (voicechat)"
+            value: "`kick` | Kicks the member from the server. \n `ban` | Bans the spesified member. \n `mute`/`unmute` | Mutes/Unmutes the spesified member."
           },
           {
             name: "Useful Commands",
