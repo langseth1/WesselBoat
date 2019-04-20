@@ -8,7 +8,7 @@ module.exports.run = async (client, message) => {
       title: "Emojis 😜",
       description: "A list of unicode emojis.",
       fields: [{
-          name: "Smileys, Handsigns, People and Clothing 😀👌👦👚",
+          name: "Smileys, Handsigns, People and Clothing 😀👌",
           value: "[Smileys & People](https://furyingfox.github.io/emoji-face.html)"
         },
         {
