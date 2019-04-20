@@ -1,4 +1,7 @@
-module.exports.run = async (client, messsage ,args) => {
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
+module.exports.run = async (client, message, args) => {
     const replyList = [
         "It is certain",
         "It is decidedly so",

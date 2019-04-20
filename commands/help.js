@@ -9,7 +9,7 @@ module.exports.run = async (client, message) => {
         description: "Made by: [fox#7345](https://discord.gg/D2WwvJd)",
         fields: [{
             name: "Normal Commands",
-            value: "`check` | Check if boat is working. \n `jerry` | Sends picture of jerry. \n `eightball` | Answers your thought."
+            value: "`check` | Check if boat is working. \n `jerry` | Sends picture of jerry. \n `8ball` | Answers your thought."
           },
           {
             name: "Admin/Mod Commands",
