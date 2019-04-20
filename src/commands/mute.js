@@ -21,7 +21,7 @@ module.exports.run = async (client, message) => {
     }
   
   } else {
-    message.reply("Could not mute the member. (User not in guild/Wrong mention)");
+    message.reply("There is no mute role.");
   }
 }
 
