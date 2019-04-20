@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/FuryingFox/WesselBoat.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Furyingfox",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/FuryingFox/WesselBoat/issues"
   },
