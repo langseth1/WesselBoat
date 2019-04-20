@@ -17,7 +17,7 @@ module.exports.run = async (client, message) => {
           },
           {
             name: "Useful Commands",
-            value: "`invite` | Sends you invite link for the bot in dms. \n `uptime` | Shows the bots uptime. \n `avatar` | Displays the users avatar. \n `ping` | Displays the bots ping."
+            value: "`invite` | Sends you invite link for the bot in dms. \n `uptime` | Shows the bots uptime. \n `emoji` | Displays a list of emojis. \n `ping` | Displays the bots ping."
           },
           {
             name: "Developer Commands",

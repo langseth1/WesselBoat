@@ -1,4 +1,5 @@
 /* 
+Made by:
 ______                _              __          
 |  ___|              (_)            / _|         
 | |_ _   _ _ __ _   _ _ _ __   __ _| |_ _____  __
@@ -12,6 +13,7 @@ Github: FuryingFox
 Discord: fox#7345
 License: MIT | USE WITH RIGHT CREDENTIALS.
 (KEEP THIS SIGNATURE HERE IF YOU USE THE CODE)
+(SAME WITH ALL OTHER PIECES OF THIS REPO)
 */
 const Discord = require('discord.js');
 const client = new Discord.Client();
