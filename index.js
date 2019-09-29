@@ -10,7 +10,7 @@ ______                _              __
                 |___/         |___/              
 Name: WesselBoat made by Furyingfox.             
 Github: FuryingFox
-Discord: fox#7345
+Discord: fox#4751
 License: MIT | USE WITH RIGHT CREDENTIALS.
 (KEEP THIS SIGNATURE HERE IF YOU USE THE CODE)
 (SAME WITH ALL OTHER PIECES OF THIS REPO)
